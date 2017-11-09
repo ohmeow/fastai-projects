@@ -1,4 +1,9 @@
 datasets/
 data/
+models/
+tmp/
 
+__pycache__
 .ipynb_checkpoints
+
+.vscode
