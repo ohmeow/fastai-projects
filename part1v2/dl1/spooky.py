@@ -4,9 +4,9 @@ from torchtext import data
 
 class SpookyDataset(torchtext.data.Dataset):
     def __init__(self, df, text_field, label_field, **kwargs):
-        fields = [('text', text_field), ('author', label_field)]
+        fields = [('text', text_field), ('label', label_field)]
 
-        examples = [ data.Example.fromlist([row['text'], row['author']], fields) for index, row in df.iterrows() ]
+        examples = [ data.Example.fromlist([row['text'], row['author'] if 'author' in row else None], fields) for index, row in df.iterrows() ]
         super().__init__(examples, fields, **kwargs)
 
     @staticmethod
